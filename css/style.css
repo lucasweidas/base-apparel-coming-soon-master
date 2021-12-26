@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/****************************************/
+/* Variables */
+
+:root {
+    --clr-desaturated-red: hsl(0, 36%, 70%);
+    --clr-soft-red: hsl(0, 93%, 68%);
+    --clr-dark-red: hsl(0, 6%, 24%);
+
+    --font-josefin: 'Josefin Sans', sans-serif;
+}
+
+/****************************************/
+/* General Styles */
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--font-josefin);
+    background: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+}
+
+main {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: repeat(3, max-content);
+    grid-template-areas: "logo" "img-mobile" "intro";
+}
+
+/****************************************/
+/* Logo Container */
+
+.logo-c {
+    width: 100%;
+    max-width: calc(450px + 4rem);
+    height: max-content;
+    padding-block: clamp(1.875rem, 6vw, 4rem);
+    padding-inline: 2rem;
+    grid-area: logo;
+}
+
+.logo-c img {
+    height: clamp(21px, 5vw, 33px);
+}
+
+/****************************************/
+/* Images Containers */
+
+.img-mobile {
+    width: 100%;
+    display: block;
+    grid-area: img-mobile;
+}
+
+.img-desktop {
+    display: none;
+    width: 100%;
+    background: url("../images/hero-desktop.jpg") top center / cover no-repeat;
+    grid-area: img-desktop;
+}
+
+/****************************************/
+/* Intro Container */
+
+.intro-c {
+    max-width: calc(450px + 4rem);
+    height: max-content;
+    color: var(--clr-desaturated-red);
+    text-align: center;
+    padding-block: clamp(4.125rem, 13vw, 5rem);
+    padding-inline: 2rem;
+    justify-self: center;
+    grid-area: intro;
+}
+
+.title {
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: clamp(2rem, 11vw, 3rem);
+    font-weight: 300;
+    line-height: 1.05em;
+}
+
+.title > strong {
+    font-weight: 600;
+    color: var(--clr-dark-red);
+}
+
+.description {
+    line-height: 1.6em;
+    padding-block-start: clamp(0.75rem, 3vw, 2.62rem);
+    padding-block-end: clamp(1.75rem, 3vw, 3rem);
+    font-size: clamp(0.875rem, 3vw, 1rem);
+}
+
+/****************************************/
+/* Form Container */
+
+.form-c {
+    width: 100%;
+    position: relative;
+}
+
+#email {
+    width: 100%;
+    height: 48px;
+    border: 1px solid hsl(0, 30%, 80%);
+    border-radius: 25px;
+    background-color: transparent;
+    outline: none;
+    font-family: var(--font-josefin);
+    font-size: 0.875rem;
+    padding-inline-start: 1.5rem;
+}
+
+#email::placeholder {
+    color: hsl(0, 30%, 80%);
+}
+
+.form-c.invalid > #email {
+    border: 2px solid var(--clr-soft-red);
+}
+
+.form-c.invalid > .icon-error,
+.form-c.invalid > .msg-error {
+    display: block;
+}
+
+.icon-error {
+    width: 20px;
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: clamp(72px, 10vw, 110px);
+    transform: translateY(-50%);
+}
+
+.icon-error > img {
+    width: 100%;
+    display: block;
+}
+
+.msg-error {
+    display: none;
+    position: absolute;
+    bottom: -25px;
+    left: 1.5rem;
+    color: var(--clr-soft-red);
+    font-size: clamp(0.813rem, 4vw, 0.938rem);
+}
+
+.active {display: block;}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: clamp(64px, 9vw, 102px);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    border-radius: 25px;
+    background-image: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+    box-shadow: 0 10px 10px hsl(0, 74%, 74%, 0.25);
+}
+
+.btn:hover {
+    background: hsl(0, 70%, 86%);
+    box-shadow: 0 15px 15px hsl(0, 46%, 24%, 0.2);
+}
+
+/****************************************/
+/* Attribution */
+
+.attribution {
+    text-align: center;
+    line-height: 1.6rem;
+    padding: 1rem;
+    color: var(--clr-desaturated-red);
+}
+
+.attribution a {
+    text-decoration: none;
+    color: var(--clr-dark-red);
+}
+
+.attribution a:hover,
+.attribution a:focus {
+    text-decoration: underline;
+    color: var(--clr-soft-red);
+}
+
+/****************************************/
+/* Media Query */
+
+@media (min-width: 650px) {
+    body {
+        background: url("../images/bg-pattern-desktop.svg") top left / 57% 100% no-repeat, linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
+    }
+
+    main {
+        grid-template-columns: 57% 43%;
+        grid-template-rows: max-content auto;
+        grid-template-areas: "logo img-desktop" "intro img-desktop";
+    }
+
+    .logo-c {justify-self: center;}
+
+    .img-desktop {display: block;}
+
+    .img-mobile {display: none;}
+
+    .intro-c {
+        text-align: start;
+        justify-self: center;
+    }
+
+    .title {
+        font-size: clamp(3rem, 8vw, 4.25rem);
+    }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Base Apparel coming soon page</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main>
+    <!-- Logo Container -->
+    <div class="logo-c">
+      <a href="index.html">
+        <img src="images/logo.svg" alt="Base Apparel Logo">
+      </a>
+    </div>
+
+    <!-- Images Containers -->
+    <div class="img-desktop"></div>
+    <img class="img-mobile" src="images/hero-mobile.jpg" alt="">
+
+    <!-- Intro Container -->
+    <section class="intro-c">
+      <h1 class="title">We're <strong>coming soon</strong></h1>
+      <p class="description">
+        Hello fellow shoppers! We're currently building our new fashion store.
+        Add your email below to stay up-to-date with announcements and our launch deals.
+      </p>
+
+      <!-- Form Container -->
+      <form class="form-c">
+        <input type="email" name="email" id="email" placeholder="Email Address">
+        <span class="icon-error"><img src="images/icon-error.svg" alt=""></span>
+        <span class="msg-error">Please provide a valid email</span>
+        <button class="btn"><img src="images/icon-arrow.svg" alt=""></button>
+      </form>
+    </section>
+  </main>
+  
+  <footer>
+    <!-- Attribution -->
+    <p class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="https://github.com/LucasWeidas" target="_blank">Lucas Weidas</a>.
+    </p>
+  </footer>
+
+  <!-- JS for email validation -->
+  <script>
+    const btn = document.querySelector(".btn");
+    const form = document.querySelector(".form-c");
+    const email = document.querySelector("#email");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+    })
+
+    email.addEventListener("keyup", () => {
+      const regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      const emailValue = email.value;
+
+      if (emailValue !== "" && !emailValue.match(regExp)) {
+        form.classList.add("invalid");
+      } else {
+        form.classList.remove("invalid");
+      }
+    });
+  </script>
+</body>
+</html>

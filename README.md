@@ -33,7 +33,6 @@ This is a solution to the [Base Apparel coming soon page challenge on Frontend M
 - Mobile-first workflow
 - Pure JavaScript
 
-
 ## Author
 
 - Github - [@lucasweidas](https://github.com/LucasWeidas)
